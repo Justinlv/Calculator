@@ -5,23 +5,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatable" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/reset.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="css/main.css">
+
+
     <title>Document</title>
 </head>
 
 <body>
 
+<div class='container'>
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <input type="number" name="num01" placeholder="First Number">
-        <select name="operator">
-            <option value="addition">+</option>
-            <option value="subtract">-</option>
-            <option value="multiply">*</option>
-            <option value="division">/</option>
+    <input class='form-control' type="number" name="num01" placeholder="First Number" value='<?= $_POST['num01']?>'>
+        <select class="form-select form-select-lg mb-3" name="operator">
+            <option <?php echo ($_POST['operator'] == 'addition') ? 'selected' : null; ?> value="addition">+</option>
+            <option <?php echo ($_POST['operator'] == 'subtract') ? 'selected' : null; ?> value="subtract">-</option>
+            <option <?php echo ($_POST['operator'] == 'multiply') ? 'selected' : null; ?> value="multiply">*</option>
+            <option <?php echo ($_POST['operator'] == 'division') ? 'selected' : null; ?> value="division">/</option>
         </select>
-        <input type="number" name="num02" placeholder="Second Number">
-        <button>Calculate</button>
+        <input class='form-control' type="number" name="num02" placeholder="Second Number" value='<?= $_POST['num02']?>'>
+        <button class='btn btn-primary'>Calculate</button>
     </form>
 
     <?php
@@ -70,7 +76,7 @@
     }
     ?>
 
-
+</div>
 </body>
 
 </html>
